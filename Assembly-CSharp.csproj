@@ -56,7 +56,9 @@
     <Compile Include="Assets\SourceFiles\InputSystem\StarterAssetsInputs.cs" />
     <Compile Include="Assets\SourceFiles\Scripts\RespawnPlayer.cs" />
     <Compile Include="Assets\SourceFiles\Scripts\MotionAudioController.cs" />
+    <Compile Include="Assets\AssemblyZone.cs" />
     <Compile Include="Assets\SourceFiles\Scripts\ThirdPersonController.cs" />
+    <Compile Include="Assets\DangerZone.cs" />
     <Compile Include="Assets\Tutorials\Styles\ApplyCustomThemeHelper.cs" />
     <Compile Include="Assets\PlayerController.cs" />
     <Compile Include="Assets\SourceFiles\Scripts\UpdateCollectibleCount.cs" />
