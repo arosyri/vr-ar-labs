@@ -54,13 +54,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\RobotPart.cs" />
+    <Compile Include="Assets\Scripts\AssemblySocket.cs" />
     <Compile Include="Assets\Scripts\UIDebag.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
     <Compile Include="Assets\Scripts\PartInfo.cs" />
     <Compile Include="Assets\Scripts\DangerZone.cs" />
     <Compile Include="Assets\Scripts\SnapZone.cs" />
+    <Compile Include="Assets\Scripts\RobotAssembly.cs" />
     <Compile Include="Assets\Scripts\ReportForm.cs" />
     <Compile Include="Assets\Scripts\TableMenu.cs" />
+    <Compile Include="Assets\Scripts\RobotConsole.cs" />
     <Compile Include="Assets\Scripts\AssemblyZone.cs" />
     <Compile Include="Assets\Scripts\SafetyWizard.cs" />
     <Compile Include="Assets\Scripts\GazeInspector.cs" />

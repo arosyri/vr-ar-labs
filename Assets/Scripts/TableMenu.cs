@@ -4,15 +4,30 @@ using UnityEngine.InputSystem;
 public class TabletMenu : MonoBehaviour
 {
     public GameObject tablet;
+
+    public bool pinnedToWall = true;
+
     public float distance = 1.0f;
+    public bool startVisible = true;
+
     private bool visible;
+
     void Start()
     {
-        SetVisible(false);
+        if (pinnedToWall)
+        {
+            SetVisible(true);
+            return;
+        }
+
+        SetVisible(startVisible);
+        if (startVisible) PlaceInFrontOfUser();
     }
 
     void Update()
     {
+        if (pinnedToWall) return;
+
         bool menuPressed = OVRInput.GetDown(OVRInput.Button.Start);
         bool tabPressed = Keyboard.current != null && Keyboard.current.tabKey.wasPressedThisFrame;
 

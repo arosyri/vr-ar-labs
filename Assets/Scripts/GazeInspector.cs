@@ -1,3 +1,4 @@
+using System.Linq;
 using UnityEngine;
 
 public class GazeInspector : MonoBehaviour
@@ -5,34 +6,27 @@ public class GazeInspector : MonoBehaviour
     public float maxDistance = 5f;
 
     private PartInfo current;
-    private string lastHitName = "";
 
     void Update()
     {
         Transform head = Camera.main.transform;
         PartInfo found = null;
 
-        Debug.DrawRay(head.position, head.forward * maxDistance, Color.red);
+        RaycastHit[] hits = Physics.RaycastAll(head.position, head.forward, maxDistance, ~0, QueryTriggerInteraction.Ignore)
+                                   .OrderBy(h => h.distance).ToArray();
 
-        if (Physics.Raycast(head.position, head.forward, out RaycastHit hit, maxDistance, ~0, QueryTriggerInteraction.Ignore))
+        foreach (RaycastHit hit in hits)
         {
+            if (hit.collider.GetComponentInParent<OVRCameraRig>() != null) continue;
+
             found = hit.collider.GetComponentInParent<PartInfo>();
-
-            if (hit.collider.name != lastHitName)
-            {
-                lastHitName = hit.collider.name;
-                Debug.Log("Gaze hit: " + hit.collider.name + " (PartInfo found: " + (found != null) + ")");
-            }
-        }
-        else
-        {
-            lastHitName = "";
+            break; 
         }
 
         if (found != current)
         {
-            if (current != null) current.Hide();
-            if (found != null) found.Show();
+            if (current != null) current.SetGazed(false);
+            if (found != null) found.SetGazed(true);
             current = found;
         }
     }
